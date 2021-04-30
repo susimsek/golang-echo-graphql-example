@@ -71,7 +71,7 @@ http://localhost:9000/playground
 * Go Uuid
 * Air
 
-## Golang Swagger
+## Golang Playground
 
 > You can access the Golang Playground from the following url.
 
