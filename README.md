@@ -70,7 +70,7 @@ docker-compose up -d
 
 You can access the Playground from the following url.
 
-http://localhost:9000/playground
+http://192.168.12.11:9000/playground
 
 ## Installation Using Vagrant for Kubernetes Deployment
 
@@ -132,7 +132,7 @@ http://localhost:9000/playground
 
 > You can access the Golang Playground from the following url.
 
-http://localhost:9000/playground
+http://app.info/playground
 
 <img src="https://github.com/susimsek/golang-echo-graphql-example/blob/main/images/go-playground.png" alt="Golang Playground" width="100%" height="100%"/> 
 
