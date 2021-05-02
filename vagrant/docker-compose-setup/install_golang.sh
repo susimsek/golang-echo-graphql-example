@@ -1,13 +1,18 @@
 #!/bin/bash
 
-#!/bin/bash
-export GO_VERSION=1.16.3
+# Variables ########################################
+GO_VERSION=1.16.3
 
-wget -c https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
+# Functions ########################################
 
+install_golang() {
+  wget -c https://dl.google.com/go/go${GO_VERSION}.linux-amd64.tar.gz -O - | sudo tar -xz -C /usr/local
+}
+
+set_golang_env() {
 sudo mkdir -p /vagrant/go
 
-sudo chmod -R 777 /vagrant/go
+sudo chown -R vagrant /vagrant/go
 # If GOPATH already set then DO Not set it again
 if [ -z $GOPATH ]
 then
@@ -20,6 +25,14 @@ then
 else
     echo "======== No Change made to .profile, .bashrc  ====="
 fi
+}
+
+# Let's Go!! ########################################
+install_golang
+set_golang_env
 
 echo "======= Done. PLEASE LOG OUT & LOG Back In ===="
 echo "Then validate by executing    'go version'"
+
+
+

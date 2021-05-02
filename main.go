@@ -20,6 +20,7 @@ func main() {
 	r := graph.NewResolver(userService, messageService)
 	srv := config.NewGraphQLServer(r)
 
+	routes.GetActuatorRoutes(e)
 	routes.GetGraphqlRoutes(e, srv)
 
 	// echo server 9000 de başlatıldı.

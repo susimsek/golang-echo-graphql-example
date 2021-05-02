@@ -8,8 +8,11 @@ then
     exit 0
 fi
 
-export DOCKER_VERSION=20.10.2
+# Variables ########################################
+DOCKER_VERSION=20.10.2
 
+
+# Functions ########################################
 install_docker() {
     apt-get update -y
     apt-get install -y apt-transport-https ca-certificates curl software-properties-common
@@ -25,14 +28,16 @@ install_docker() {
     usermod -aG docker $SUDO_USER
 }
 
-
-
-# Install docker
-install_docker
-
+reload_docker(){
 service docker restart
 systemctl daemon-reload
 systemctl restart docker
+}
+
+# Let's Go!! ########################################
+install_docker
+reload_docker
+
 
 echo "======= Done. PLEASE LOG OUT & LOG Back In ===="
 echo "Then validate by executing    'docker info'"

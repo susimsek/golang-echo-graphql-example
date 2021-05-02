@@ -3,23 +3,35 @@
 >
 <img src="https://github.com/susimsek/golang-echo-graphql-example/blob/main/images/golang-echo-graphql-example.png" alt="Golang Graphql Example Using Echo" width="100%" height="100%"/> 
 
-## Prerequisites
+## Prerequisites for Docker-Compose Deployment
 
 * Golang 1.16.x
 * Docker 19.03+
 * Docker Compose 1.25+
 
-## Installation
+## Installation for Docker-Compose Deployment
 
 ```sh
 docker-compose up -d 
 ```
 
-## Installation Using Vagrant
+## Prerequisites for Kubernetes Deployment
 
-<img src="https://github.com/susimsek/golang-echo-graphql-example/blob/main/images/vagrant-installation.png" alt="Golang Vagrant Installation" width="100%" height="100%"/> 
+* Kubernetes 1.12+
+* Helm 3.1.0
+* PV provisioner support in the underlying infrastructure
 
-### Prerequisites
+## Installation for Docker-Compose Deployment
+
+```sh
+helm install app helm-chart/app
+```
+
+## Installation Using Vagrant for Docker-Compose Deployment
+
+<img src="https://github.com/susimsek/golang-echo-graphql-example/blob/main/images/vagrant-docker-compose-installation.png" alt="Golang Vagrant Docker Compose Installation" width="100%" height="100%"/> 
+
+### Prerequisites for Docker-Compose Deployment
 
 * Vagrant 2.2+
 * Virtualbox or Hyperv
@@ -33,7 +45,7 @@ vagrant ssh
 ```
 
 ```sh
-cd vagrant/setup
+cd vagrant/docker-compose-setup
 ```
 
 ```sh
@@ -54,6 +66,51 @@ vagrant ssh
 
 ```sh
 docker-compose up -d
+```
+
+You can access the Playground from the following url.
+
+http://localhost:9000/playground
+
+## Installation Using Vagrant for Kubernetes Deployment
+
+<img src="https://github.com/susimsek/golang-echo-graphql-example/blob/main/images/vagrant-kubernetes-installation.png" alt="Golang Vagrant Kubernetes Installation" width="100%" height="100%"/> 
+
+### Prerequisites for Kubernetes Deployment
+
+* Vagrant 2.2+
+* Virtualbox or Hyperv
+
+```sh
+vagrant up
+```
+
+```sh
+vagrant ssh
+```
+
+```sh
+cd vagrant/kubernetes-setup
+```
+
+```sh
+sudo chmod u+x *.sh
+```
+
+```sh
+./install-prereqs.sh
+```
+
+```sh
+exit
+```
+
+```sh
+vagrant ssh
+```
+
+```sh
+helm install app helm-chart/app
 ```
 
 You can access the Playground from the following url.
