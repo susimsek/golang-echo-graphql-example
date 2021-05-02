@@ -121,8 +121,7 @@ http://localhost:9000/playground
 
 * Golang 1.16.3
 * Echo
-* Query & Mutation & Subscription Example   
-* Pagination Support
+* Query & Mutation & Subscription Example
 * Gqlgen
 * Gqlparser
 * Go Uuid
