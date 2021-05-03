@@ -2,7 +2,7 @@ pipeline {
     environment {
         BRANCH_NAME = "${env.GIT_BRANCH.split("/")[1]}"
         DEPLOY = "${BRANCH_NAME == "main" || BRANCH_NAME == "develop" ? "true" : "false"}"
-        NAME = "${env.BRANCH_NAME == "main" ? "example" : "example-staging"}"
+        NAME = "app"
         VERSION = '1.0.0'
         DOMAIN = 'localhost'
         REGISTRY = 'suayb/golang-echo-graphql-example'
@@ -36,6 +36,16 @@ pipeline {
                     }
                 }
             }
+        }
+        stage('Kubernetes Deploy') {
+              when {
+                    environment name: 'DEPLOY', value: 'true'
+              }
+              steps {
+                  container('helm') {
+                          sh "helm upgrade --install --force --set name=${NAME} --set golangapp.image.tag=${VERSION} ${NAME} helm-chart/app"
+                      }
+              }
         }
     }
 }
