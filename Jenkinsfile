@@ -47,7 +47,6 @@ pipeline {
              }
             steps {
                 container('docker') {
-                    sh "ls"
                     sh "docker build -t ${IMAGE_REGISTRY}:${IMAGE_VERSION} ."
                 }
             }
