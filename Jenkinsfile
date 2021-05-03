@@ -16,9 +16,6 @@ pipeline {
         }
     }
     stages {
-        stage('Checkout'){
-             checkout scm
-        }
         stage('Kubernetes Version Control') {
              when {
                 environment name: 'DEPLOY', value: 'true'
