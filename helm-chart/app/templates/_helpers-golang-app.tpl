@@ -2,7 +2,6 @@
 app: {{ template "app.shortname" . }}-golangapp
 release: {{ .Release.Name }}
 component: golangapp
-release: {{ .Release.Revision }}
 {{- end }}
 
 {{- define "golangapp.labels" -}}

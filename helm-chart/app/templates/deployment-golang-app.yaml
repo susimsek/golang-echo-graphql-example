@@ -20,6 +20,7 @@ spec:
       annotations:
         checksum/config: {{ include (print $.Template.BasePath "/config-golang-app.yaml") . | sha256sum }}
       labels:
+        date: "{{ now | unixEpoch }}"
     {{- include "golangapp.selectorLabels" . | nindent 8 }}
     spec:
       {{- if .Values.global.imagePullSecrets }}
