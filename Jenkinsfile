@@ -1,6 +1,7 @@
 pipeline {
     environment {
-        DEPLOY = "${env.BRANCH_NAME == "main" || env.BRANCH_NAME == "develop" ? "true" : "false"}"
+        BRANCH_NAME = "${env.GIT_BRANCH.split("/")[1]}"
+        DEPLOY = "${BRANCH_NAME == "main" || BRANCH_NAME == "develop" ? "true" : "false"}"
         NAME = "${env.BRANCH_NAME == "main" ? "example" : "example-staging"}"
         VERSION = '1.0.0'
         DOMAIN = 'localhost'
@@ -17,7 +18,8 @@ pipeline {
         stage('Docker Build') {
             steps {
                 container('docker') {
-                    echo 'Pulling... ' + env.BRANCH_NAME
+                    echo "deploy... ${DEPLOY}"
+                    echo "Pulling...  ${BRANCH_NAME}"
                     sh "docker build -t ${REGISTRY}:${VERSION} ."
                 }
             }
