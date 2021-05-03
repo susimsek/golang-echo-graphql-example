@@ -17,7 +17,7 @@ pipeline {
         stage('Docker Build') {
             steps {
                 container('docker') {
-                    echo 'branch : ${env.BRANCH_NAME}'
+                    echo 'Pulling... ' + env.GIT_BRANCH
                     sh "docker build -t ${REGISTRY}:${VERSION} ."
                 }
             }
