@@ -2,7 +2,7 @@
 app: {{ template "app.shortname" . }}-golangapp
 release: {{ .Release.Name }}
 component: golangapp
-date: {{ now | unixEpoch }}
+rollme: {{ randAlphaNum 5 | quote }}
 {{- end }}
 
 {{- define "golangapp.labels" -}}
