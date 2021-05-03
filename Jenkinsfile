@@ -43,7 +43,7 @@ pipeline {
               }
               steps {
                   container('helm') {
-                          sh "helm upgrade --install --force --set name=${NAME} --set golangapp.image.tag=${VERSION} ${NAME} ./helm-chart/app"
+                          sh "helm upgrade ${NAME} --install --force --set golangapp.image.tag=${VERSION} helm-chart/app"
                       }
               }
         }
