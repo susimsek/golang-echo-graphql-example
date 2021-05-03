@@ -1,7 +1,7 @@
 pipeline {
     environment {
         BRANCH_NAME = "${env.GIT_BRANCH.split("/")[1]}"
-        DEPLOY = "${BRANCH_NAME == "main1" || BRANCH_NAME == "develop" ? "true" : "false"}"
+        DEPLOY = "${BRANCH_NAME == "main" || BRANCH_NAME == "develop" ? "true" : "false"}"
         NAME = "app"
         VERSION = '1.0.4'
         DOMAIN = 'localhost'
@@ -39,7 +39,7 @@ pipeline {
         }
         stage('Kubernetes Deploy') {
               when {
-                    environment name: 'DEPLOY', value: 'false'
+                    environment name: 'DEPLOY', value: 'true'
               }
               steps {
                   container('helm') {
