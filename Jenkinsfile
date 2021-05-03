@@ -16,11 +16,12 @@ pipeline {
     }
     stages {
         stage('Docker Build') {
+             when {
+                environment name: 'DEPLOY', value: 'true'
+             }
             steps {
                 container('docker') {
-                    echo "deploy... ${DEPLOY}"
-                    echo "Pulling...  ${BRANCH_NAME}"
-                    // sh "docker build -t ${REGISTRY}:${VERSION} ."
+                    sh "docker build -t ${REGISTRY}:${VERSION} ."
                 }
             }
         }
