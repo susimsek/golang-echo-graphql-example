@@ -20,7 +20,7 @@ pipeline {
                 container('docker') {
                     echo "deploy... ${DEPLOY}"
                     echo "Pulling...  ${BRANCH_NAME}"
-                    sh "docker build -t ${REGISTRY}:${VERSION} ."
+                    // sh "docker build -t ${REGISTRY}:${VERSION} ."
                 }
             }
         }
