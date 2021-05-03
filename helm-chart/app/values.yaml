@@ -49,6 +49,8 @@ golangapp:
       port: http
       scheme: HTTP
       httpHeaders: [ ]
+    failureThreshold: 6
+    successThreshold: 1
   readinessProbe:
     enabled: true
     httpGet:
@@ -56,6 +58,8 @@ golangapp:
       port: http
       scheme: HTTP
       httpHeaders: [ ]
+    failureThreshold: 6
+    successThreshold: 1
   customLivenessProbe: { }
   customReadinessProbe: { }
   environment:
