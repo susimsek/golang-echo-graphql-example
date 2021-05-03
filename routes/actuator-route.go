@@ -8,7 +8,7 @@ import (
 func GetActuatorRoutes(e *echo.Echo) {
 	e.GET("/healthz", func(c echo.Context) error {
 		return c.JSON(http.StatusOK, map[string]string{
-			"status": "UP7",
+			"status": "UP8",
 		})
 	})
 }
