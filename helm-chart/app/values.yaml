@@ -21,7 +21,7 @@ golangapp:
   service:
     type: NodePort
     port: 80
-    nodePort: 30020
+    nodePort: 30021
     clusterIP:
     loadBalancerIP:
   ingress:
