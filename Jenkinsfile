@@ -18,7 +18,7 @@ pipeline {
     stages {
         stage('Docker Build') {
              when {
-                environment name: 'DEPLOY', value: 'false'
+                environment name: 'DEPLOY', value: 'true'
              }
             steps {
                 container('docker') {
@@ -28,7 +28,7 @@ pipeline {
         }
         stage('Docker Publish') {
             when {
-                environment name: 'DEPLOY', value: 'false'
+                environment name: 'DEPLOY', value: 'true'
             }
             steps {
                 container('docker') {
