@@ -15,11 +15,9 @@ pipeline {
     }
     stages {
         stage('Docker Build') {
-            when {
-                environment name: 'DEPLOY', value: 'true'
-            }
             steps {
                 container('docker') {
+                    echo 'branch : ${env.BRANCH_NAME}'
                     sh "docker build -t ${REGISTRY}:${VERSION} ."
                 }
             }
