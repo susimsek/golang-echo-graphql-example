@@ -54,7 +54,7 @@ pipeline {
               }
               steps {
                   container('helm') {
-                          sh "helm upgrade --install --force ${CHART_NAME} ${CHART_DIR} --namespace ${CHART_NAMESPACE}"
+                          sh "helm upgrade --install ${CHART_NAME} ${CHART_DIR} --namespace ${CHART_NAMESPACE}"
                       }
               }
         }
