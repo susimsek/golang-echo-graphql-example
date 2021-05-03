@@ -5,6 +5,11 @@ metadata:
     some-label: pod
 spec:
   containers:
+    - name: golang
+      image: golang:1.16-buster
+      command:
+        - cat
+      tty: true
     - name: docker
       image: docker:20.10
       command:

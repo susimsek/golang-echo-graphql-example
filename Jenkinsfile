@@ -16,14 +16,32 @@ pipeline {
         }
     }
     stages {
+        stage('Checkout'){
+             checkout scm
+        }
         stage('Kubernetes Version Control') {
              when {
                 environment name: 'DEPLOY', value: 'true'
              }
-            steps {
+             steps {
                 container('kubectl') {
                     sh "kubectl version"
                 }
+             }
+        }
+        stage('Build') {
+             when {
+                 environment name: 'DEPLOY', value: 'true'
+             }
+            steps {
+               container('golang') {
+                   sh """
+                      ln -s `pwd` /go/src/app
+                      cd /go/src/app
+                      go mod download
+                      go build -v -o server
+                       """
+               }
             }
         }
         stage('Docker Build') {
@@ -32,6 +50,7 @@ pipeline {
              }
             steps {
                 container('docker') {
+                    sh "ls"
                     sh "docker build -t ${IMAGE_REGISTRY}:${IMAGE_VERSION} ."
                 }
             }
