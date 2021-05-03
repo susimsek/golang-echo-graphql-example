@@ -6,7 +6,7 @@ pipeline {
         VERSION = '1.0.0'
         DOMAIN = 'localhost'
         REGISTRY = 'suayb/golang-echo-graphql-example'
-        REGISTRY_CREDENTIAL = 'dockerhub-creds'
+        REGISTRY_CREDENTIAL = 'dockerhubcreds'
     }
     agent {
         kubernetes {
