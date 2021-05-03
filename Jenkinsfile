@@ -16,6 +16,16 @@ pipeline {
         }
     }
     stages {
+        stage('Kubernetes Version Control') {
+             when {
+                environment name: 'DEPLOY', value: 'true'
+             }
+            steps {
+                container('kubectl') {
+                    sh "kubectl version"
+                }
+            }
+        }
         stage('Docker Build') {
              when {
                 environment name: 'DEPLOY', value: 'true'
