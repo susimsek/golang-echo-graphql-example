@@ -4,6 +4,7 @@ metadata:
   labels:
     some-label: pod
 spec:
+  serviceAccount: jenkins
   containers:
     - name: golang
       image: golang:1.16-buster
