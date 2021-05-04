@@ -14,7 +14,6 @@ def helmInstall (namespace, release) {
     echo "Installing ${release} in ${namespace}"
 
     script {
-        sh "helm repo update"
         sh """
             helm upgrade --install --namespace ${namespace} ${release} ${CHART_DIR}
         """
