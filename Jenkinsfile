@@ -1,3 +1,26 @@
+/*
+    Create the kubernetes namespace
+ */
+def createNamespace (namespace) {
+    echo "Creating namespace ${namespace} if needed"
+
+    sh "[ ! -z \"\$(kubectl get ns ${namespace} -o name 2>/dev/null)\" ] || kubectl create ns ${namespace}"
+}
+
+/*
+    Helm install
+ */
+def helmInstall (namespace, release) {
+    echo "Installing ${release} in ${namespace}"
+
+    script {
+        sh "helm repo update"
+        sh """
+            helm upgrade --install --namespace ${namespace} ${release} ${CHART_DIR}
+        """
+    }
+}
+
 pipeline {
     environment {
         BRANCH_NAME = "${env.GIT_BRANCH.split("/")[1]}"
@@ -68,9 +91,14 @@ pipeline {
                     environment name: 'DEPLOY', value: 'true'
               }
               steps {
+                script {
+                  container('kubectl') {
+                        createNamespace (CHART_NAMESPACE)
+                  }
                   container('helm') {
-                          sh "helm upgrade --install ${CHART_NAME} ${CHART_DIR} --namespace ${CHART_NAMESPACE}"
-                      }
+                        helmInstall(CHART_NAMESPACE, CHART_NAME)
+                  }
+                }
               }
         }
     }
