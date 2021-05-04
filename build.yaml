@@ -10,6 +10,9 @@ spec:
       command:
         - cat
       tty: true
+      volumeMounts:
+        - name: gomodules
+          mountPath: /go/pkg/mod
     - name: docker
       image: docker:20.10
       command:
@@ -33,3 +36,6 @@ spec:
     - name: dockersock
       hostPath:
         path: /var/run/docker.sock
+    - name: gomodules
+      hostPath:
+        path: /go/pkg/mod
