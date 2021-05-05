@@ -36,5 +36,11 @@ pipeline {
                     }
             }
         }
+        stage('Deploy Docker-compose') {
+             steps {
+               sh "docker-compose pull"
+               sh "docker-compose up -d --remove-orphans"
+             }
+        }
     }
 }
