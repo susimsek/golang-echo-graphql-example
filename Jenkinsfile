@@ -1,5 +1,6 @@
 
 pipeline {
+    agent any
     environment {
         IMAGE_REGISTRY = 'suayb/golang-echo-graphql-example'
         IMAGE_VERSION = '1.0.0'
