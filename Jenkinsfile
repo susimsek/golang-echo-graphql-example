@@ -28,7 +28,7 @@ pipeline {
         CHART_NAMESPACE= "app"
         CHART_DIR = "helm-chart/app"
         IMAGE_REGISTRY = 'suayb/golang-echo-graphql-example'
-        IMAGE_VERSION = '1.0.4'
+        IMAGE_VERSION = '1.0.0'
         IMAGE_REGISTRY_CREDENTIAL = 'dockerhubcreds'
     }
     agent {
