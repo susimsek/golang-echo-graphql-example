@@ -9,7 +9,7 @@ import (
 
 func GetGraphqlRoutes(e *echo.Echo, srv *handler.Server) {
 	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Welcome!")
+		return c.String(http.StatusOK, "Welcome1!")
 	})
 
 	// For Query and Mutations
