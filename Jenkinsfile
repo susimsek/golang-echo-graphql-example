@@ -12,6 +12,7 @@ pipeline {
              docker {
                image 'golang:1.16-buster'
                args '-v /go/pkg/mod:/go/pkg/mod'
+               reuseNode true
              }
            }
            steps {
