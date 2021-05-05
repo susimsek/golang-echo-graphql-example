@@ -2,7 +2,7 @@
 pipeline {
     environment {
         BRANCH_NAME = "${env.GIT_BRANCH.split("/")[1]}"
-        DEPLOY = "${BRANCH_NAME == "main" || BRANCH_NAME == "develop" ? "true" : "false"}"
+        DEPLOY = "${BRANCH_NAME} == 'main' ? 'true' : 'false'"
         IMAGE_REGISTRY = 'suayb/golang-echo-graphql-example'
         IMAGE_VERSION = '1.0.0'
         IMAGE_REGISTRY_CREDENTIAL = 'dockerhubcreds'
