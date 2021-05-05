@@ -5,7 +5,6 @@ pipeline {
         IMAGE_VERSION = '1.0.0'
         IMAGE_REGISTRY_CREDENTIAL = 'dockerhubcreds'
     }
-    agent none
     stages {
         stage('Docker Build') {
             steps {
