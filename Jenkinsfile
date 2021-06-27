@@ -7,6 +7,17 @@ pipeline {
         IMAGE_REGISTRY_CREDENTIAL = 'dockerhubcreds'
     }
     stages {
+        stage('Code Quality Check via SonarQube') {
+           steps {
+               script {
+               def scannerHome = tool 'sonarqube';
+                   withSonarQubeEnv("sonarqube") {
+                     sh "${tool("sonarqube")}/bin/sonar-scanner"
+                   }
+               }
+           }
+        }
+
         stage('Build') {
            agent {
              docker {
